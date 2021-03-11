@@ -1,14 +1,14 @@
 // remover tudo relacionado ao typeorm
-import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
-import { v4 as uuid_v4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import User from '@modules/users/infra/typeorm/entities/User';
+import IUsersRepository from '../IUsersRepository';
 
-class UsersRepository implements IUsersRepository {
+class FakeUsersRepository implements IUsersRepository {
   private users: User[] = [];
 
-  public async findById(id: string): Promise<User | undefined> {
+  public async findByID(id: string): Promise<User | undefined> {
     const findUser = this.users.find(user => user.id === id);
 
     return findUser;
@@ -23,7 +23,7 @@ class UsersRepository implements IUsersRepository {
   public async create(userData: ICreateUserDTO): Promise<User> {
     const user = new User();
 
-    Object.assign(user, { id: uuid_v4() }, userData);
+    Object.assign(user, { id: uuid() }, userData);
 
     this.users.push(user);
 
@@ -39,4 +39,4 @@ class UsersRepository implements IUsersRepository {
   }
 }
 
-export default UsersRepository;
+export default FakeUsersRepository;

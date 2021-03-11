@@ -12,7 +12,7 @@ Para rodar o projeto será necessário instalar as seguintes aplicações:
 Subindo a base de dados:
 
 ```bash
- docker run --name database -p 5432:5432 -d -e POSTGRES_DBNAME=gobarber 
+ docker run --name database -p 5432:5432 -d -e POSTGRES_DBNAME=gobarber
  ```
 
 Obs: Vocé pode escolher qualquer nome para a base de dados, devendo somente alterar no arquivo database.js dentro da pasta config, assim como valores referente ao ambiente (usuario, host, etc).
@@ -46,4 +46,4 @@ yarn install
 
 # Autor
 
-[Filipe Dantas](https://github.com/flipdantas) 
+[Filipe Dantas](https://github.com/flipdantas)
